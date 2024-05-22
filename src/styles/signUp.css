@@ -30,7 +30,7 @@ h1 {
 
 input {
     display: block;
-    width: 100%;
+    width: 90%;
     padding: 1rem;
     margin-bottom: 1rem;
     border: none;
@@ -42,6 +42,7 @@ input {
 
 input::placeholder {
     color: rgba(255, 255, 255, 0.5);
+    
 }
 
 button {

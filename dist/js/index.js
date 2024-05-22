@@ -214,7 +214,7 @@ h1 {
 
 input {
     display: block;
-    width: 100%;
+    width: 90%;
     padding: 1rem;
     margin-bottom: 1rem;
     border: none;
@@ -226,6 +226,7 @@ input {
 
 input::placeholder {
     color: rgba(255, 255, 255, 0.5);
+    
 }
 
 button {
@@ -7276,6 +7277,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 // import Web3 from 'web3';
 // import { Contract } from 'web3-eth-contract';
 // Import the ABI for the CresentoCrossChainWallet contract
@@ -7287,9 +7290,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 // // Create an instance of the contract
 // const contract = new Contract(CresentoCrossChainWalletABI, contractAddress);
 var Signup = function () {
-    var _a = (0,react.useState)(''), username = _a[0], setUsername = _a[1];
-    var _b = (0,react.useState)(''), password = _b[0], setPassword = _b[1];
-    var _c = (0,react.useState)(''), recoveryEmail = _c[0], setRecoveryEmail = _c[1];
+    var _a = (0,react.useState)(""), username = _a[0], setUsername = _a[1];
+    var _b = (0,react.useState)(""), password = _b[0], setPassword = _b[1];
+    var _c = (0,react.useState)(""), recoveryEmail = _c[0], setRecoveryEmail = _c[1];
+    var navigate = useNavigate();
     var handleUsernameChange = function (e) {
         setUsername(e.target.value);
     };
@@ -7299,13 +7303,16 @@ var Signup = function () {
     var handleRecoveryEmailChange = function (e) {
         setRecoveryEmail(e.target.value);
     };
+    var handleBackHandler = function () {
+        navigate("/");
+    };
     var createAccount = function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            console.log('Account Created!');
+            console.log("Account Created!");
             return [2 /*return*/];
         });
     }); };
-    return ((0,jsx_runtime.jsxs)("div", { children: [(0,jsx_runtime.jsx)("h1", { children: "Create Account" }), (0,jsx_runtime.jsx)("input", { type: "text", placeholder: "Username", value: username, onChange: handleUsernameChange }), (0,jsx_runtime.jsx)("input", { type: "password", placeholder: "Password", value: password, onChange: handlePasswordChange }), (0,jsx_runtime.jsx)("input", { type: "email", placeholder: "Recovery Email", value: recoveryEmail, onChange: handleRecoveryEmailChange }), (0,jsx_runtime.jsx)("button", __assign({ onClick: createAccount }, { children: "Create Account" }))] }));
+    return ((0,jsx_runtime.jsxs)(Routes, { children: [(0,jsx_runtime.jsx)(Route, { path: "/", element: (0,jsx_runtime.jsxs)("div", { children: [(0,jsx_runtime.jsx)("button", __assign({ onClick: handleBackHandler }, { children: "Back" })), (0,jsx_runtime.jsx)("h1", { children: "Create Account" }), (0,jsx_runtime.jsx)("input", { type: "text", placeholder: "Username", value: username, onChange: handleUsernameChange }), (0,jsx_runtime.jsx)("input", { type: "password", placeholder: "Password", value: password, onChange: handlePasswordChange }), (0,jsx_runtime.jsx)("input", { type: "email", placeholder: "Recovery Email", value: recoveryEmail, onChange: handleRecoveryEmailChange }), (0,jsx_runtime.jsx)("button", __assign({ onClick: createAccount }, { children: "Create Account" }))] }) }), (0,jsx_runtime.jsx)(Route, { path: "/", element: (0,jsx_runtime.jsx)(src_Landing, {}) })] }));
 };
 /* harmony default export */ const SignUp = (Signup);
 
@@ -7360,6 +7367,8 @@ var SignIn_generator = (undefined && undefined.__generator) || function (thisArg
 
 
 
+
+
 // import Web3 from 'web3';
 // import { Contract } from 'web3-eth-contract';
 // // Import the ABI for the CresentoCrossChainWallet contract
@@ -7371,9 +7380,10 @@ var SignIn_generator = (undefined && undefined.__generator) || function (thisArg
 // // Create an instance of the contract
 // const contract = new Contract(CresentoCrossChainWalletABI, contractAddress);
 var SignIn = function () {
-    var _a = (0,react.useState)(''), username = _a[0], setUsername = _a[1];
-    var _b = (0,react.useState)(''), password = _b[0], setPassword = _b[1];
-    var _c = (0,react.useState)(''), recoveryEmail = _c[0], setRecoveryEmail = _c[1];
+    var _a = (0,react.useState)(""), username = _a[0], setUsername = _a[1];
+    var _b = (0,react.useState)(""), password = _b[0], setPassword = _b[1];
+    var _c = (0,react.useState)(""), recoveryEmail = _c[0], setRecoveryEmail = _c[1];
+    var navigate = useNavigate();
     var handleUsernameChange = function (e) {
         setUsername(e.target.value);
     };
@@ -7383,13 +7393,17 @@ var SignIn = function () {
     var handleRecoveryEmailChange = function (e) {
         setRecoveryEmail(e.target.value);
     };
+    var handleBackHandler = function () {
+        navigate("/");
+        console.log("Handle Back Handler Working");
+    };
     var createAccount = function () { return SignIn_awaiter(void 0, void 0, void 0, function () {
         return SignIn_generator(this, function (_a) {
-            console.log('Account Created!');
+            console.log("Account Created!");
             return [2 /*return*/];
         });
     }); };
-    return ((0,jsx_runtime.jsxs)("div", { children: [(0,jsx_runtime.jsx)("h1", { children: "Sign In" }), (0,jsx_runtime.jsx)("input", { type: "text", placeholder: "Username", value: username, onChange: handleUsernameChange }), (0,jsx_runtime.jsx)("input", { type: "password", placeholder: "Password", value: password, onChange: handlePasswordChange }), (0,jsx_runtime.jsx)("button", SignIn_assign({ onClick: createAccount }, { children: "Sign In" })), (0,jsx_runtime.jsx)("button", SignIn_assign({ onClick: createAccount }, { children: "Forgot Password" }))] }));
+    return ((0,jsx_runtime.jsxs)(Routes, { children: [(0,jsx_runtime.jsx)(Route, { path: "/", element: (0,jsx_runtime.jsxs)("div", { children: [(0,jsx_runtime.jsx)("button", SignIn_assign({ onClick: handleBackHandler }, { children: "Back" })), (0,jsx_runtime.jsx)("h1", { children: "Sign In" }), (0,jsx_runtime.jsx)("input", { type: "text", placeholder: "Username", value: username, onChange: handleUsernameChange }), (0,jsx_runtime.jsx)("input", { type: "password", placeholder: "Password", value: password, onChange: handlePasswordChange }), (0,jsx_runtime.jsx)("button", SignIn_assign({ onClick: createAccount }, { children: "Sign In" })), (0,jsx_runtime.jsx)("button", SignIn_assign({ onClick: createAccount }, { children: "Forgot Password" }))] }) }), (0,jsx_runtime.jsx)(Route, { path: "/", element: (0,jsx_runtime.jsx)(src_Landing, {}) })] }));
 };
 /* harmony default export */ const src_SignIn = (SignIn);
 
@@ -7417,6 +7431,7 @@ var LandingPage = function () {
     };
     var handleSignIn = function () {
         navigate('/sign-in');
+        console.log("Handle SignIn Working!");
     };
     return ((0,jsx_runtime.jsxs)(Routes, { children: [(0,jsx_runtime.jsx)(Route, { path: "/", element: (0,jsx_runtime.jsxs)("div", Landing_assign({ className: "container" }, { children: [(0,jsx_runtime.jsx)("h1", Landing_assign({ className: "title" }, { children: "Cresento Business Wallet" })), (0,jsx_runtime.jsx)("p", Landing_assign({ className: "subtitle" }, { children: "The Future of Trustworthy Business Transactions" })), (0,jsx_runtime.jsx)("button", Landing_assign({ className: "button", onClick: handleSignUp }, { children: "First Time? Sign Up!" })), (0,jsx_runtime.jsx)("button", Landing_assign({ className: "button", onClick: handleSignIn }, { children: "Already User? Sign In!" }))] })) }), (0,jsx_runtime.jsx)(Route, { path: "/sign-up", element: (0,jsx_runtime.jsx)(SignUp, {}) }), (0,jsx_runtime.jsx)(Route, { path: "/sign-in", element: (0,jsx_runtime.jsx)(src_SignIn, {}) })] }));
 };

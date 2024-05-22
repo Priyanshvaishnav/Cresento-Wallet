@@ -13,6 +13,7 @@ const LandingPage: React.FC = () => {
   };
   const handleSignIn = () => {
     navigate('/sign-in');
+    console.log("Handle SignIn Working!");
   };
   return (
       <Routes>

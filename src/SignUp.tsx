@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import './styles/signUp.css';
+import React, { useState } from "react";
+import "./styles/signUp.css";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import LandingPage from "./Landing";
 
 // import Web3 from 'web3';
 // import { Contract } from 'web3-eth-contract';
@@ -16,10 +18,10 @@ import './styles/signUp.css';
 // const contract = new Contract(CresentoCrossChainWalletABI, contractAddress);
 
 const Signup: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [recoveryEmail, setRecoveryEmail] = useState('');
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [recoveryEmail, setRecoveryEmail] = useState("");
+  const navigate = useNavigate();
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
@@ -28,12 +30,16 @@ const Signup: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const handleRecoveryEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRecoveryEmailChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRecoveryEmail(e.target.value);
   };
-
+  const handleBackHandler = () => {
+    navigate("/");
+  };
   const createAccount = async () => {
-      console.log('Account Created!');
+    console.log("Account Created!");
     //   try {
     //   // Call the contract method to create the wallet
     //   await contract.methods.createWallet(username, password, recoveryEmail).send({ from: 'YOUR_ACCOUNT_ADDRESS' });
@@ -44,28 +50,37 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Create Account</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={handleUsernameChange}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div>
+            <button onClick={handleBackHandler}>Back</button>
+            <h1>Create Account</h1>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <input
+              type="email"
+              placeholder="Recovery Email"
+              value={recoveryEmail}
+              onChange={handleRecoveryEmailChange}
+            />
+            <button onClick={createAccount}>Create Account</button>
+          </div>
+        }
       />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <input
-        type="email"
-        placeholder="Recovery Email"
-        value={recoveryEmail}
-        onChange={handleRecoveryEmailChange}
-      />
-      <button onClick={createAccount}>Create Account</button>
-    </div>
+      <Route path="/" element={<LandingPage />} />
+    </Routes>
   );
 };
 
