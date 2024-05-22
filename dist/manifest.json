@@ -1,0 +1,10 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "Cresento Wallet",
+    "description": "A secure chrome Extension for Web3",
+    "action": {
+        "default_popup": "js/index.html",
+        "default_title": "Crecento Wallet"
+    }
+}

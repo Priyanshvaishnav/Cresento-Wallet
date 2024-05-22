@@ -1,0 +1,89 @@
+.navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.navbar-left,
+.navbar-center,
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.chain-dropdown {
+    position: relative;
+}
+
+.chain-icon-container {
+    background-color: #333333;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chain-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #333333;
+    padding: 0.5rem;
+    list-style-type: none;
+}
+
+.chain-dropdown-menu li {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.chain-dropdown-menu li:hover {
+    background-color: #1a1a1a;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.network-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.account-address {
+    font-size: 1rem;
+}
+
+.settings-button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.settings-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1;
+    background-color: #333333;
+    padding: 0.5rem;
+    list-style-type: none;
+}
+
+.settings-dropdown-menu li {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.settings-dropdown-menu li:hover {
+    background-color: #1a1a1a;
+}
