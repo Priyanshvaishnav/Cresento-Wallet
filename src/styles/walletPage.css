@@ -3,13 +3,13 @@
 .wallet-container {
     background: linear-gradient(to bottom right, #1a1a1a, #333333);
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    padding: 2rem;
 }
 
 h2 {
@@ -35,8 +35,7 @@ h2 {
 .wallet-overview,
 .wallet-tokens,
 .wallet-nfts,
-.wallet-activity,
-.wallet-actions {
+.wallet-activity{
     margin: 1rem 0;
     text-align: center;
     animation: fadeIn 2s ease-in-out;
@@ -60,14 +59,17 @@ h2 {
     border-radius: 0.5rem;
 }
 
-.wallet-actions {
+/* .wallet-actions {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
-}
+} */
 
-.wallet-actions button {
+/* .wallet-actions button {
+    display: flex;
+    flex-direction: row;
     background-color: #ffffff;
     color: #333333;
     border: none;
@@ -85,7 +87,7 @@ h2 {
     background-color: #333333;
     color: #ffffff;
     transform: scale(1.1);
-}
+} */
 
 .wallet-tabs {
     display: flex;

@@ -1,9 +1,6 @@
 import React from 'react';
 import {Route, Routes, useNavigate } from 'react-router-dom';
 import './styles/Landing.css';
-import Signup from './SignUp';
-import Signin from './SignIn';
-import WalletPage from './walletPage';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -16,10 +13,6 @@ const LandingPage: React.FC = () => {
     console.log("Handle SignIn Working!");
   };
   return (
-      <Routes>
-        <Route
-          path="/"
-          element={
             <div className="container">
               <h1 className="title">Cresento Business Wallet</h1>
               <p className="subtitle">The Future of Trustworthy Business Transactions</p>
@@ -30,12 +23,7 @@ const LandingPage: React.FC = () => {
                 Already User? Sign In!
               </button>
             </div>
-          }
-        />
-      <Route path="/sign-up" element={<Signup />} />
-      <Route path="/sign-in" element={<Signin />} />
-      </Routes>
   );
 };
 
-export default LandingPage;
+export default LandingPage; 

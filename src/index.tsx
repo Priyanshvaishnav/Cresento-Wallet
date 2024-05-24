@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { MemoryRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { MemoryRouter, Route, Routes} from 'react-router-dom';
 import './styles/index.css';
-import App from './App';
+import LandingPage from './Landing';
+import WalletPage from './walletPage';
+import Signup from './SignUp';
+import SignIn from './SignIn';
 
 const root = document.createElement("div")
 root.className = "container"
@@ -11,7 +14,12 @@ const rootDiv = ReactDOM.createRoot(root);
 rootDiv.render(
   <React.StrictMode>
     <MemoryRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/walletpage" element={<WalletPage />} />
+         <Route path="/sign-up" element={<Signup />} />
+         <Route path="/sign-in" element={<SignIn />} />
+      </Routes>
     </MemoryRouter>
   </React.StrictMode>
 );

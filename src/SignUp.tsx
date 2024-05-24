@@ -50,10 +50,6 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
           <div>
             <button onClick={handleBackHandler}>Back</button>
             <h1>Create Account</h1>
@@ -77,10 +73,6 @@ const Signup: React.FC = () => {
             />
             <button onClick={createAccount}>Create Account</button>
           </div>
-        }
-      />
-      <Route path="/" element={<LandingPage />} />
-    </Routes>
   );
 };
 

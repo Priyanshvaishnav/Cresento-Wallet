@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./styles/signUp.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import LandingPage from "./Landing";
+import { useNavigate } from "react-router-dom";
+import "./styles/signIn.css";
+
 // import Web3 from 'web3';
 // import { Contract } from 'web3-eth-contract';
 
@@ -42,6 +42,7 @@ const SignIn: React.FC = () => {
   };
   const createAccount = async () => {
     console.log("Account Created!");
+    navigate("/walletpage");
     //   try {
     //   // Call the contract method to create the wallet
     //   await contract.methods.createWallet(username, password, recoveryEmail).send({ from: 'YOUR_ACCOUNT_ADDRESS' });
@@ -52,32 +53,25 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <div>
-            <button onClick={handleBackHandler}>Back</button>
-            <h1>Sign In</h1>
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <button onClick={createAccount}>Sign In</button>
-            <button onClick={createAccount}>Forgot Password</button>
-          </div>
-        }
+    <div >
+      <button onClick={handleBackHandler}>Back</button>
+      <h1>Sign In</h1>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={handleUsernameChange}
       />
-      <Route path="/" element={<LandingPage />} />
-    </Routes>
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <button onClick={createAccount}>Sign In</button>
+      <button onClick={createAccount}>Forgot Password</button>
+    </div>
+    
   );
 };
 
