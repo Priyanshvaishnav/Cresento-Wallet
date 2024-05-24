@@ -59,36 +59,6 @@ h2 {
     border-radius: 0.5rem;
 }
 
-/* .wallet-actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-} */
-
-/* .wallet-actions button {
-    display: flex;
-    flex-direction: row;
-    background-color: #ffffff;
-    color: #333333;
-    border: none;
-    padding: 0.8rem;
-    font-size: 1.2rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.wallet-actions button:hover {
-    background-color: #333333;
-    color: #ffffff;
-    transform: scale(1.1);
-} */
-
 .wallet-tabs {
     display: flex;
     justify-content: center;
@@ -102,7 +72,7 @@ h2 {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     margin: 0 0.5rem;
 }
 
@@ -114,14 +84,15 @@ h2 {
 .token-actions {
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin: 3rem;
 }
 
 .token-actions button {
     background-color: #ffffff;
     color: #333333;
     border: none;
-    padding: 0.5rem;
+    height: 6rem;
+    padding: 0.1rem;
     font-size: 1.2rem;
     border-radius: 50%;
     cursor: pointer;
@@ -153,4 +124,9 @@ h2 {
 
 .token-links a:hover {
     text-decoration: underline;
+}
+
+.logout-btn{
+    width: 80%;
+    align-items: center;
 }

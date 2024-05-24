@@ -113,7 +113,26 @@ code {
 .container{
   width: 100%;
 }
-`, ""]);
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom right, #1a1a1a, #333333);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1a1a1a;
+}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -397,36 +416,6 @@ h2 {
     border-radius: 0.5rem;
 }
 
-/* .wallet-actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-} */
-
-/* .wallet-actions button {
-    display: flex;
-    flex-direction: row;
-    background-color: #ffffff;
-    color: #333333;
-    border: none;
-    padding: 0.8rem;
-    font-size: 1.2rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.wallet-actions button:hover {
-    background-color: #333333;
-    color: #ffffff;
-    transform: scale(1.1);
-} */
-
 .wallet-tabs {
     display: flex;
     justify-content: center;
@@ -440,7 +429,7 @@ h2 {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     margin: 0 0.5rem;
 }
 
@@ -452,14 +441,15 @@ h2 {
 .token-actions {
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin: 3rem;
 }
 
 .token-actions button {
     background-color: #ffffff;
     color: #333333;
     border: none;
-    padding: 0.5rem;
+    height: 6rem;
+    padding: 0.1rem;
     font-size: 1.2rem;
     border-radius: 50%;
     cursor: pointer;
@@ -491,6 +481,11 @@ h2 {
 
 .token-links a:hover {
     text-decoration: underline;
+}
+
+.logout-btn{
+    width: 80%;
+    align-items: center;
 }`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -12593,9 +12588,15 @@ var walletPage_assign = (undefined && undefined.__assign) || function () {
 
 
 
+
 var WalletPage = function () {
-    var _a = (0,react.useState)('tokens'), activeTab = _a[0], setActiveTab = _a[1];
-    return ((0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "wallet-container" }, { children: [(0,jsx_runtime.jsx)("div", walletPage_assign({ className: "wallet-overview" }, { children: (0,jsx_runtime.jsx)("h1", walletPage_assign({ className: "acc-bal" }, { children: "5.67 ETH" })) })), (0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "wallet-tabs" }, { children: [(0,jsx_runtime.jsx)("button", walletPage_assign({ className: "tab-button ".concat(activeTab === "tokens" ? "active" : ""), onClick: function () { return setActiveTab("tokens"); } }, { children: "Tokens" })), (0,jsx_runtime.jsx)("button", walletPage_assign({ className: "tab-button ".concat(activeTab === "nfts" ? "active" : ""), onClick: function () { return setActiveTab("nfts"); } }, { children: "NFTs" })), (0,jsx_runtime.jsx)("button", walletPage_assign({ className: "tab-button ".concat(activeTab === "activity" ? "active" : ""), onClick: function () { return setActiveTab("activity"); } }, { children: "Activity" }))] })), activeTab === "tokens" && ((0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "wallet-tokens" }, { children: [(0,jsx_runtime.jsx)("h2", { children: "Token Balances" }), (0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "token-actions" }, { children: [(0,jsx_runtime.jsx)("button", walletPage_assign({ className: "buyBtn" }, { children: (0,jsx_runtime.jsx)(FaShoppingCart, {}) })), (0,jsx_runtime.jsx)("button", walletPage_assign({ className: "sellBtn" }, { children: (0,jsx_runtime.jsx)(FaWallet, {}) }))] })), (0,jsx_runtime.jsxs)("ul", { children: [(0,jsx_runtime.jsxs)("li", { children: [(0,jsx_runtime.jsx)("span", { children: "ETH " }), (0,jsx_runtime.jsx)("span", { children: "5.67" })] }), (0,jsx_runtime.jsxs)("li", { children: [(0,jsx_runtime.jsx)("span", { children: "BNB" }), (0,jsx_runtime.jsx)("span", { children: "12.45" })] })] }), (0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "token-links" }, { children: [(0,jsx_runtime.jsx)("a", walletPage_assign({ href: "#" }, { children: "Import Token" })), (0,jsx_runtime.jsx)("a", walletPage_assign({ href: "#" }, { children: "Refresh List" }))] }))] }))), activeTab === "nfts" && ((0,jsx_runtime.jsx)("div", walletPage_assign({ className: "wallet-nfts" }, { children: "Your NFTs will be displayed here." }))), activeTab === "activity" && ((0,jsx_runtime.jsx)("div", walletPage_assign({ className: "wallet-activity" }, { children: "Your recent activities will be displayed here." })))] })));
+    var navigate = useNavigate();
+    var _a = (0,react.useState)("tokens"), activeTab = _a[0], setActiveTab = _a[1];
+    var logoutHandler = function () {
+        navigate("/");
+        console.log("Logout Handler Working");
+    };
+    return ((0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "wallet-container" }, { children: [(0,jsx_runtime.jsx)("button", walletPage_assign({ className: "logout-btn", onClick: logoutHandler }, { children: "Logout" })), (0,jsx_runtime.jsx)("div", walletPage_assign({ className: "wallet-overview" }, { children: (0,jsx_runtime.jsx)("h1", walletPage_assign({ className: "acc-bal" }, { children: "5.67 ETH" })) })), (0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "wallet-tabs" }, { children: [(0,jsx_runtime.jsx)("button", walletPage_assign({ className: "tab-button ".concat(activeTab === "tokens" ? "active" : ""), onClick: function () { return setActiveTab("tokens"); } }, { children: "Tokens" })), (0,jsx_runtime.jsx)("button", walletPage_assign({ className: "tab-button ".concat(activeTab === "activity" ? "active" : ""), onClick: function () { return setActiveTab("activity"); } }, { children: "Activity" }))] })), activeTab === "tokens" && ((0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "wallet-tokens" }, { children: [(0,jsx_runtime.jsx)("h2", { children: "Token Balances" }), (0,jsx_runtime.jsxs)("div", walletPage_assign({ className: "token-actions" }, { children: [(0,jsx_runtime.jsx)("button", walletPage_assign({ className: "buyBtn" }, { children: (0,jsx_runtime.jsx)(FaShoppingCart, {}) })), (0,jsx_runtime.jsx)("button", walletPage_assign({ className: "sellBtn" }, { children: (0,jsx_runtime.jsx)(FaWallet, {}) }))] })), (0,jsx_runtime.jsxs)("ul", { children: [(0,jsx_runtime.jsxs)("li", { children: [(0,jsx_runtime.jsx)("span", { children: "ETH " }), (0,jsx_runtime.jsx)("span", { children: "5.67" })] }), (0,jsx_runtime.jsxs)("li", { children: [(0,jsx_runtime.jsx)("span", { children: "BNB" }), (0,jsx_runtime.jsx)("span", { children: "12.45" })] })] }), (0,jsx_runtime.jsx)("div", walletPage_assign({ className: "token-links" }, { children: (0,jsx_runtime.jsx)("a", walletPage_assign({ href: "#" }, { children: "Refresh List" })) }))] }))), activeTab === "activity" && ((0,jsx_runtime.jsx)("div", walletPage_assign({ className: "wallet-activity" }, { children: "Your recent activities will be displayed here." })))] })));
 };
 /* harmony default export */ const src_walletPage = (WalletPage);
 

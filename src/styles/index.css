@@ -17,3 +17,23 @@ code {
 .container{
   width: 100%;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom right, #1a1a1a, #333333);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1a1a1a;
+}
