@@ -8,6 +8,12 @@ import {
   FaShoppingCart,
   FaWallet,
 } from "react-icons/fa";
+import {
+  faCreditCard,
+  faUserPlus,
+  faFileSignature,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 const WalletPage: React.FC = () => {
@@ -17,9 +23,14 @@ const WalletPage: React.FC = () => {
     navigate("/");
     console.log("Logout Handler Working");
   };
+  const sendButtonHandler = () => {
+    navigate("/txn");
+  }
   return (
     <div className="wallet-container">
-      <button className="logout-btn"onClick={logoutHandler}>Logout</button>
+      <button className="logout-btn" onClick={logoutHandler}>
+        Logout
+      </button>
       <div className="wallet-overview">
         <h1 className="acc-bal">5.67 ETH</h1>
       </div>
@@ -39,13 +50,16 @@ const WalletPage: React.FC = () => {
       </div>
       {activeTab === "tokens" && (
         <div className="wallet-tokens">
-          <h2>Token Balances</h2>
+          <h2>Token Actions</h2>
           <div className="token-actions">
-            <button className="buyBtn">
-              <FaShoppingCart />
+            <button className="buyBtn" onClick={sendButtonHandler}>
+              <FontAwesomeIcon icon={faCreditCard} />
             </button>
             <button className="sellBtn">
-              <FaWallet />
+              <FontAwesomeIcon icon={faUserPlus} />
+            </button>
+            <button className="sellBtn">
+              <FontAwesomeIcon icon={faFileSignature} />{" "}
             </button>
           </div>
           <ul>

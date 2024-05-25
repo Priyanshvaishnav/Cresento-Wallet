@@ -84,7 +84,7 @@ h2 {
 .token-actions {
     display: flex;
     justify-content: center;
-    margin: 3rem;
+    /* margin: 3rem; */
 }
 
 .token-actions button {
