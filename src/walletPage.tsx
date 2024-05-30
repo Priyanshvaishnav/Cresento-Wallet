@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import "./styles/walletPage.css";
 import {
-  FaPlus,
-  FaMinus,
-  FaExchangeAlt,
-  FaArrowRight,
-  FaShoppingCart,
-  FaWallet,
-} from "react-icons/fa";
-import {
   faCreditCard,
   faUserPlus,
   faFileSignature,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const WalletPage: React.FC = () => {
   const navigate = useNavigate();

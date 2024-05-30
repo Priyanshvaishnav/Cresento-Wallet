@@ -20801,6 +20801,8 @@ var Signup = function () {
     var createAccount = function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             console.log("Account Created!");
+            navigate("/");
+            console.log("Account Created Successfully");
             return [2 /*return*/];
         });
     }); };
