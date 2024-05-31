@@ -1,179 +1,104 @@
-// import React, { useState } from "react";
-// import "./styles/signUp.css";
-// import { Route, Routes, useNavigate } from "react-router-dom";
-// import LandingPage from "./Landing";
-
-// // import Web3 from 'web3';
-// // import { Contract } from 'web3-eth-contract';
-
-// // Import the ABI for the CresentoCrossChainWallet contract
-// // import CresentoCrossChainWalletABI from './CresentoCrossChainWallet.json';
-// // // Configure the Web3 instance with your desired provider
-// // const web3 = new Web3('https://your-ethereum-provider-url');
-
-// // // Deployed contract address
-// // const contractAddress = 'YOUR_CONTRACT_ADDRESS';
-
-// // // Create an instance of the contract
-// // const contract = new Contract(CresentoCrossChainWalletABI, contractAddress);
-
-// const Signup: React.FC = () => {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [recoveryEmail, setRecoveryEmail] = useState("");
-//   const navigate = useNavigate();
-//   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     setUsername(e.target.value);
-//   };
-
-//   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//     setPassword(e.target.value);
-//   };
-
-//   const handleRecoveryEmailChange = (
-//     e: React.ChangeEvent<HTMLInputElement>
-//   ) => {
-//     setRecoveryEmail(e.target.value);
-//   };
-//   const handleBackHandler = () => {
-//     navigate("/");
-//   };
-//   const createAccount = async () => {
-//     console.log("Account Created!");
-//     navigate("/");
-//     console.log("Account Created Successfully");
-//     //   try {
-//     //   // Call the contract method to create the wallet
-//     //   await contract.methods.createWallet(username, password, recoveryEmail).send({ from: 'YOUR_ACCOUNT_ADDRESS' });
-//     //   console.log('Account created successfully');
-//     // } catch (error) {
-//     //   console.error('Error creating account:', error);
-//     // }
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={handleBackHandler}>Back</button>
-//       <h1>Create Account</h1>
-//       <input
-//         type="text"
-//         placeholder="Username"
-//         value={username}
-//         onChange={handleUsernameChange}
-//       />
-//       <input
-//         type="password"
-//         placeholder="Password"
-//         value={password}
-//         onChange={handlePasswordChange}
-//       />
-//       <input
-//         type="email"
-//         placeholder="Recovery Email"
-//         value={recoveryEmail}
-//         onChange={handleRecoveryEmailChange}
-//       />
-//       <button onClick={createAccount}>Create Account</button>
-//     </div>
-//   );
-// };
-
-// export default Signup;
-
-
-
-// ---------------------------------------------------------------------------------------------
-
-
 import React, { useState } from "react";
 import "./styles/signUp.css";
-import { useNavigate } from "react-router-dom";
-import { createAccount } from "./scripts/deploy"; // Import the createAccount function from the backend script
+import { Route, Routes, useNavigate } from "react-router-dom";
+import {web3} from "./scripts/deploy";
+// import crypto from "crypto-browserify";
 
-// In-memory storage for user data
-export const users: {
+// global.crypto = global.crypto || crypto;
+
+
+
+
+interface UserData {
   username: string;
   password: string;
-  recoveryEmail: string;
-}[] = [];
-
+  email: string;
+  account: string;
+}
 const Signup: React.FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [recoveryEmail, setRecoveryEmail] = useState("");
+  const [userData, setUserData] = useState<UserData>({
+    username: "",
+    password: "",
+    email: "",
+    account: "",
+  });
   const navigate = useNavigate();
-
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleRecoveryEmailChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRecoveryEmail(e.target.value);
+  const handleChange = (value: string, name: string) => {
+    setUserData({ ...userData, [name]: value });
+    console.log(name, value);
   };
 
   const handleBackHandler = () => {
     navigate("/");
   };
-
-const handleCreateAccount = async () => {
-  try {
-    // Check if the username is already taken
-    const userExists = users.some((user) => user.username === username);
-
-    if (userExists) {
-      console.error("Username already taken");
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Store user data in memory (e.g., in a global variable or state)
+    if (!userData.username || !userData.password || !userData.email) {
+      alert("Please fill in all fields");
       return;
     }
+    const registeredUsers = JSON.parse(
+      localStorage.getItem("registeredUsers") || "[]"
+    );
+    if (
+      registeredUsers.some(
+        (u: { username: string }) => u.username === userData.username
+      )
+    ) {
+      alert("Username already taken");
+      return;
+    }
+    if (userData.password.length < 4) {
+      alert("Password must be at least 8 characters long");
+      return;
+    }
+    const newAccount = web3.eth.accounts.create();
+    userData.account = newAccount.address;
+    registeredUsers.push(userData);
+    console.log(userData.account);
+    localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+    createAccount();
 
-    // Create a new user object
-    const newUser = {
-      username,
-      password,
-      recoveryEmail,
-    };
-
-    // Call the createAccount function from the backend script
-    await createAccount(newUser);
-
-    // Add the new user to the in-memory storage
-    users.push(newUser);
-
-    console.log("Account created successfully");
-    navigate("/"); // Redirect to the desired page after successful account creation
-  } catch (error) {
-    console.error("Error creating account:", error);
-  }
-};
+    alert("Registration successful!");
+  };
+  const createAccount = async () => {
+    console.log("Account Created!");
+    navigate("/");
+    console.log("Account Created Successfully");
+  };
 
   return (
     <div>
       <button onClick={handleBackHandler}>Back</button>
       <h1>Create Account</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={handleUsernameChange}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <input
-        type="email"
-        placeholder="Recovery Email"
-        value={recoveryEmail}
-        onChange={handleRecoveryEmailChange}
-      />
-      <button onClick={createAccount}>Create Account</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={userData.username}
+          onChange={(e: any) => {
+            handleChange(e.target.value, "username");
+          }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={userData.password}
+          onChange={(e: any) => {
+            handleChange(e.target.value, "password");
+          }}
+        />
+        <input
+          type="email"
+          placeholder="Recovery Email"
+          value={userData.email}
+          onChange={(e: any) => {
+            handleChange(e.target.value, "email");
+          }}
+        />
+        <button type="submit">Create Account</button>
+      </form>
     </div>
   );
 };

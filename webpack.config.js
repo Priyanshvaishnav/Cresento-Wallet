@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require('webpack'); // Add this line
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
@@ -38,12 +39,23 @@ module.exports = {
     ...getHtmlPlugins(["index"]),
   ],
   resolve: {
+    fallback: {
+      fs: false,
+      path: require.resolve("path-browserify"),
+      os: require.resolve("os-browserify/browser"),
+      process: require.resolve("process/browser"),
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
     path: path.join(__dirname, "dist/js"),
     filename: "[name].js",
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: "process/browser", // Add this line
+    }),
+  ],
 };
 
 function getHtmlPlugins(chunks) {

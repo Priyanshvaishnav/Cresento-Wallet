@@ -37,7 +37,7 @@ const Transaction: React.FC = () => {
   const handleBackHandler = () => {
     navigate("/walletpage");
   };
-  const createAccount = async () => {
+  const handleSend = async () => {
     console.log("Account Created!");
     //   try {
     //   // Call the contract method to create the wallet
@@ -70,7 +70,7 @@ const Transaction: React.FC = () => {
         value={recoveryEmail}
         onChange={handleRecoveryEmailChange}
       />
-      <button onClick={createAccount}>Send</button>
+      <button onClick={handleSend}>Send</button>
     </div>
   );
 };
