@@ -60,10 +60,11 @@ const Signup: React.FC = () => {
     localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
     createAccount();
 
-    alert("Registration successful!");
+    alert("Registration successful!, Your account address is: " + userData.account);
   };
   const createAccount = async () => {
     console.log("Account Created!");
+
     navigate("/");
     console.log("Account Created Successfully");
   };

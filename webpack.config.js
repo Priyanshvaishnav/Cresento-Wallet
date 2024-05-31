@@ -37,6 +37,9 @@ module.exports = {
       patterns: [{ from: "manifest.json", to: "../manifest.json" }],
     }),
     ...getHtmlPlugins(["index"]),
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
   ],
   resolve: {
     fallback: {
@@ -51,11 +54,6 @@ module.exports = {
     path: path.join(__dirname, "dist/js"),
     filename: "[name].js",
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      process: "process/browser", // Add this line
-    }),
-  ],
 };
 
 function getHtmlPlugins(chunks) {

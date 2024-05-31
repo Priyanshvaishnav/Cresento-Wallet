@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = "ae12831a67da467589840046cf8ad516";
 const { Web3 } = require("web3");
 const node = `https://go.getblock.io/${API_KEY}/`;
 export const web3 = new Web3(node);
@@ -33,9 +33,15 @@ const sendSignedTx = async (signedTx) => {
   console.log(
     "Recipient Account Balance:",
     web3.utils.fromWei(recipientBalance, "ether")
-  );};
+  );
+};
+export const fetchBalance = async (accAddr) => {
+  const balWei = await web3.eth.getBalance(accAddr);
+  const balEth = web3.utils.fromWei(balWei, "ether");
+  return balEth;
+};
 
-export const executeTransaction = async (accountTo , amountTo) => {
+export const executeTransaction = async (accountTo, amountTo) => {
   // const amountTo = "0.01";
   const nonce = await web3.eth.getTransactionCount(accountFrom.address);
   const rawTx = {
@@ -51,6 +57,3 @@ export const executeTransaction = async (accountTo , amountTo) => {
 };
 
 executeTransaction().catch(console.error);
-
-
-

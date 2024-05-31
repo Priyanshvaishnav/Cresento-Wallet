@@ -14,8 +14,8 @@ const LandingPage: React.FC = () => {
   };
   return (
             <div className="container">
-              <h1 className="title">Cresento Business Wallet</h1>
-              <p className="subtitle">The Future of Trustworthy Business Transactions</p>
+              <h1 className="title">Cresento Wallet</h1>
+              <p className="subtitle">The Web3 Wallet for Secure Transactions</p>
               <button className="button" onClick={handleSignUp}>
                 First Time? Sign Up!
               </button>

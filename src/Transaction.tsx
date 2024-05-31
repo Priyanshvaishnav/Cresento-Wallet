@@ -1,20 +1,8 @@
 import React, { useState } from "react";
 import "./styles/signUp.css";
 import {useNavigate } from "react-router-dom";
+import { txHash } from "./data";
 
-// import Web3 from 'web3';
-// import { Contract } from 'web3-eth-contract';
-
-// Import the ABI for the CresentoCrossChainWallet contract
-// import CresentoCrossChainWalletABI from './CresentoCrossChainWallet.json';
-// // Configure the Web3 instance with your desired provider
-// const web3 = new Web3('https://your-ethereum-provider-url');
-
-// // Deployed contract address
-// const contractAddress = 'YOUR_CONTRACT_ADDRESS';
-
-// // Create an instance of the contract
-// const contract = new Contract(CresentoCrossChainWalletABI, contractAddress);
 
 const Transaction: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -38,7 +26,8 @@ const Transaction: React.FC = () => {
     navigate("/walletpage");
   };
   const handleSend = async () => {
-    console.log("Account Created!");
+    alert("Your transaction hash is: " + txHash);
+    handleBackHandler();
     //   try {
     //   // Call the contract method to create the wallet
     //   await contract.methods.createWallet(username, password, recoveryEmail).send({ from: 'YOUR_ACCOUNT_ADDRESS' });

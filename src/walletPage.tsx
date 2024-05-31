@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/walletPage.css";
 import {
   faCreditCard,
@@ -7,14 +7,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import { fetchBalance } from "./scripts/deploy";
+import { SenderAccount } from "./data";
+
 
 const WalletPage: React.FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"tokens" | "activity">("tokens");
+  const [accBal, setAccBal] = useState("");
   const logoutHandler = () => {
     navigate("/");
     console.log("Logout Handler Working");
   };
+  useEffect(() => {
+    fetchBalance(SenderAccount).then((res) => {
+      console.log(res);
+      setAccBal(res);
+    });
+  },[])
   const sendButtonHandler = () => {
     navigate("/txn");
   }
@@ -24,7 +34,7 @@ const WalletPage: React.FC = () => {
         Logout
       </button>
       <div className="wallet-overview">
-        <h1 className="acc-bal">5.67 ETH</h1>
+        <h1 className="acc-bal">{accBal.substring(0, 8)} ETH</h1>
       </div>
       <div className="wallet-tabs">
         <button
@@ -57,7 +67,7 @@ const WalletPage: React.FC = () => {
           <ul>
             <li>
               <span>ETH </span>
-              <span>5.67</span>
+              <span>{accBal.substring(0, 8)}</span>
             </li>
             <li>
               <span>BNB</span>
