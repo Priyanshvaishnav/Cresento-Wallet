@@ -20,4 +20,4 @@ Using Cresento Wallet is incredibly simple. Just follow these steps:
 3) To send cryptocurrencies, simply enter the recipient's username and the amount you want to transfer.
 4) Review and confirm the transaction details, and your transfer will be processed securely and efficiently.
 
-Experience the convenience and simplicity of Cresento Wallet today! Join the growing community of users who have embraced this innovative web3 wallet and enjoy hassle-free cryptocurrency transactions like never before.t documentation](https://reactjs.org/).
+Experience the convenience and simplicity of Cresento Wallet today! Join the growing community of users who have embraced this innovative web3 wallet and enjoy hassle-free cryptocurrency transactions like never before.
