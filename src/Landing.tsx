@@ -20,7 +20,7 @@ const LandingPage: React.FC = () => {
                 First Time? Sign Up!
               </button>
               <button className="button" onClick={handleSignIn}>
-                Already User? Sign In!
+                Already a User? Sign In!
               </button>
             </div>
   );

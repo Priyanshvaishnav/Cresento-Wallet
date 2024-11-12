@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
     if (user) {
       signInHandler();
     } else {
-      alert("Invalid username or password.");
+      alert("Invalid USERNAME or PASSWORD.");
     }
   };
   const navigate = useNavigate();
